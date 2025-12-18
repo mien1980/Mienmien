@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>麵麵科技 MienMien Tech | 法幣與加密穩定幣套利專家</title>
+    <style>
+        :root {
+            --primary-color: #0052cc;
+            --secondary-color: #00d4ff;
+            --text-dark: #333;
+            --bg-light: #f4f7f9;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            scroll-behavior: smooth;
+        }
+
+        /* 導覽列 */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary-color); }
+
+        .lang-switch button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            cursor: pointer;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .lang-switch button:hover { background: #003d99; }
+
+        /* 主視覺 */
+        .hero {
+            background: linear-gradient(135deg, #0052cc 0%, #00d4ff 100%);
+            color: white;
+            padding: 120px 10%;
+            text-align: center;
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 20px; }
+
+        /* 內容區塊 */
+        .container { padding: 80px 10%; }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 10px auto;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); }
+
+        .highlight-text {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* 聯絡表單 */
+        .contact-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        .form-group textarea { height: 100px; }
+
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .submit-btn:disabled { background: #ccc; cursor: not-allowed; }
+
+        footer {
+            background: #222;
+            color: #ccc;
+            text-align: center;
+            padding: 30px;
+            margin-top: 80px;
+        }
+
+        .lang-en { display: none; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <span class="lang-zh">麵麵科技有限公司</span>
+            <span class="lang-en">MienMien Tech</span>
+        </div>
+        <div class="lang-switch">
+            <button onclick="switchLang()">EN / 中文</button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1 class="lang-zh">跨越法幣與數字資產的套利專家</h1>
+        <h1 class="lang-en">Expert in Fiat and Digital Asset Arbitrage</h1>
+        <p class="lang-zh">結合傳統匯市與加密金融，打造全方位的穩定收益模型</p>
+        <p class="lang-en">Combining traditional Forex with Crypto Finance for comprehensive steady returns.</p>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title lang-zh">核心業務</h2>
+        <h2 class="section-title lang-en">Core Services</h2>
+        
+        <div class="services">
+            <div class="card">
+                <h3 class="lang-zh"><span class="highlight-text">USDT / USD</span> 跨市套利</h3>
+                <h3 class="lang-en"><span class="highlight-text">USDT / USD</span> Cross-Market Arbitrage</h3>
+                <p class="lang-zh">精準監控全球交易平台中 <span class="highlight-text">USDT</span> 與美元的微小溢價差異。透過高頻算法，在穩定幣脫鉤或溢價時快速進場，鎖定低風險收益。</p>
+                <p class="lang-en">Precision monitoring of premium differences between <span class="highlight-text">USDT</span> and USD across global platforms. Using algorithms to capture gains during stablecoin fluctuations.</p>
+            </div>
+
+            <div class="card">
+                <h3 class="lang-zh">全球法幣對沖</h3>
+                <h3 class="lang-en">Global Fiat Hedging</h3>
+                <p class="lang-zh">利用各國銀行間的即時匯差，透過多節點部署實現自動化交易，有效避開單一貨幣波動風險。</p>
+                <p class="lang-en">Capitalizing on real-time bank exchange rate gaps via multi-node deployment to automate trades and mitigate single currency risks.</p>
+            </div>
+
+            <div class="card">
+                <h3 class="lang-zh">AI 自動化風控</h3>
+                <h3 class="lang-en">AI Automated Risk Control</h3>
+                <p class="lang-zh">24/7 全天候監控流動性深度與市場深度，確保套利路徑在極端行情下依然保有高度安全性。</p>
+                <p class="lang-en">24/7 monitoring of liquidity and market depth, ensuring arbitrage paths remain highly secure during extreme volatility.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title lang-zh" id="contact">聯絡我們</h2>
+        <h2 class="section-title lang-en" id="contact-en">Contact Us</h2>
+        
+        <div class="contact-section">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label class="lang-zh">姓名</label>
+                    <label class="lang-en">Name</label>
+                    <input type="text" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label class="lang-zh">電子信箱</label>
+                    <label class="lang-en">Email</label>
+                    <input type="email" id="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <label class="lang-zh">訊息</label>
+                    <label class="lang-en">Message</label>
+                    <textarea id="message" placeholder="Your inquiry..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="lang-zh">送出訊息</span>
+                    <span class="lang-en">Send Message</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 麵麵科技有限公司 MienMien Technology Co., Ltd. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let currentLang = 'zh';
+
+        function switchLang() {
+            const zhElements = document.querySelectorAll('.lang-zh');
+            const enElements = document.querySelectorAll('.lang-en');
+            
+            if (currentLang === 'zh') {
+                zhElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => el.style.display = 'block');
+                currentLang = 'en';
+            } else {
+                zhElements.forEach(el => el.style.display = 'block');
+                enElements.forEach(el => el.style.display = 'none');
+                currentLang = 'zh';
+            }
+        }
+
+        // --- Google Sheets 串接邏輯 (已保留您之前的 URL) ---
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwOblKF_bNV1xsMJc4wWhdqLlkns2wyNRZXXF--Jz058sf0V7XyCt0PkDF071SNCxhL5Q/exec';
+        const form = document.getElementById('contactForm');
+        const btn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            btn.disabled = true;
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = currentLang === 'zh' ? '傳送中...' : 'Sending...';
+
+            const data = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                cache: 'no-cache',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(() => {
+                const successMsg = currentLang === 'zh' ? '感謝您的聯絡！資料已成功儲存。' : 'Thank you! Your message has been saved.';
+                alert(successMsg);
+                form.reset();
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert('Oops! Something went wrong.');
+            })
+            .finally(() => {
+                btn.disabled = false;
+                btn.innerHTML = originalContent;
+            });
+        });
+    </script>
+</body>
+</html>
