@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OO科技 OOOO Tech | 法幣與加密穩定幣套利專家</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* Silver & Deep Ruby Palette */
+      --brand-main: #9b111e;    /* Ruby Red */
+      --brand-dark: #4a0404;
+      
+      --silver-light: #f5f5f7;  /* 亮銀白 */
+      --silver-mid: #c0c0c0;    /* 經典銀 */
+      --silver-dark: #8e8e93;   /* 霧面銀 */
+
+      --bg-black: #050505;      /* 深邃黑 */
+      --bg-panel: rgba(255, 255, 255, 0.05);
+      
+      --border-silver: rgba(192, 192, 192, 0.2);
+      --shadow-premium: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      
+      --radius-xl: 12px; /* 縮小半徑，更顯利落與科技感 */
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      color: var(--silver-light);
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(155, 17, 30, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(192, 192, 192, 0.08) 0%, transparent 40%),
+        var(--bg-black);
+      font-family: "Inter","Noto Sans TC",system-ui,-apple-system,sans-serif;
+      line-height:1.7;
+      letter-spacing:.5px;
+    }
+
+    /* Noise texture */
+    body::after {
+      content: "";
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      padding: 20px 10%;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(5, 5, 5, 0.8);
+      border-bottom: 1px solid var(--border-silver);
+      backdrop-filter: blur(20px);
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #ffffff;
+      display: flex; align-items: center; gap: 12px;
+      letter-spacing: 2px;
+    }
+    .logo::before {
+      content: "";
+      width: 14px; height: 14px;
+      background: var(--brand-main);
+      transform: rotate(45deg);
+      box-shadow: 0 0 15px var(--brand-main);
+    }
+
+    .lang-switch button {
+      background: transparent;
+      border: 1px solid var(--silver-dark);
+      color: var(--silver-mid);
+      padding: 6px 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+    .lang-switch button:hover {
+      border-color: #fff;
+      color: #fff;
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 160px 10% 120px;
+      text-align: center;
+      background: radial-gradient(ellipse at center, rgba(155, 17, 30, 0.05) 0%, transparent 70%);
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin: 0 0 24px;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0 0 30px rgba(255,255,255,0.1);
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--silver-mid);
+      max-width: 700px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    /* Content Layout */
+    .container { padding: 100px 10%; }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      color: #ffffff;
+      margin-bottom: 80px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+    }
+    .section-title::after {
+      content: "";
+      display: block; width: 40px; height: 1px;
+      background: var(--brand-main);
+      margin: 20px auto;
+    }
+
+    /* Cards */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+    }
+    .card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+      padding: 50px 35px;
+      border: 1px solid var(--border-silver);
+      transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+      position: relative;
+    }
+    .card:hover {
+      border-color: var(--silver-mid);
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.04);
+    }
+    .card h3 {
+      color: #ffffff;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+    .card p {
+      color: var(--silver-dark);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+    .highlight-text {
+      color: var(--silver-light);
+      border-bottom: 1px solid var(--brand-main);
+    }
+
+    /* Form */
+    .contact-section {
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 60px;
+      border: 1px solid var(--border-silver);
+      background: rgba(255,255,255,0.01);
+    }
+    .form-group label {
+      color: var(--silver-mid);
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+      display: block;
+      letter-spacing: 2px;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border-silver);
+      color: #fff;
+      padding: 12px 0;
+      margin-bottom: 30px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--brand-main);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 18px;
+      background: linear-gradient(180deg, #ffffff 0%, #d1d1d6 100%); /* Silver metallic button */
+      color: #000;
+      border: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .submit-btn:hover {
+      background: #ffffff;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+      transform: scale(1.01);
+    }
+
+    footer {
+      padding: 60px 10%;
+      border-top: 1px solid var(--border-silver);
+      text-align: center;
+      color: var(--silver-dark);
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+
+    .lang-en { display: none; }
+
+    @media (max-width: 768px) {
+      .container { padding: 60px 6%; }
+      .contact-section { padding: 30px; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <span class="lang-zh">OO科技</span>
+      <span class="lang-en">OOOO Tech</span>
+    </div>
+    <div class="lang-switch">
+      <button onclick="switchLang()">EN / 中文</button>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1 class="lang-zh">跨越法幣與數字資產的套利專家</h1>
+    <h1 class="lang-en">Expert in Fiat and Digital Asset Arbitrage</h1>
+    <p class="lang-zh">結合傳統匯市與加密金融，打造全方位的穩定收益模型</p>
+    <p class="lang-en">Combining traditional Forex with Crypto Finance for comprehensive steady returns.</p>
+  </header>
+
+  <div class="container">
+    <h2 class="section-title lang-zh">核心業務</h2>
+    <h2 class="section-title lang-en">Core Services</h2>
+
+    <div class="services">
+      <div class="card">
+        <h3 class="lang-zh"><span class="highlight-text">美元穩定幣 / 美元</span> 跨市套利</h3>
+        <h3 class="lang-en"><span class="highlight-text">USDT(USDC) / USD</span> Cross-Market Arbitrage</h3>
+        <p class="lang-zh">精準監控全球交易平台中 <span class="highlight-text">美元穩定幣</span> 與美元的微小溢價差異。透過高頻算法，在穩定幣脫鉤或溢價時快速進場，鎖定低風險收益。</p>
+        <p class="lang-en">Precision monitoring of premium differences between <span class="highlight-text">USDT(USDC)</span> and USD across global platforms.</p>
+      </div>
+
+      <div class="card">
+        <h3 class="lang-zh">全球法幣對沖</h3>
+        <h3 class="lang-en">Global Fiat Hedging</h3>
+        <p class="lang-zh">利用各國銀行間的即時匯差，透過多節點部署實現自動化交易，有效避開單一貨幣波動風險。</p>
+        <p class="lang-en">Capitalizing on real-time bank exchange rate gaps via multi-node deployment to automate trades.</p>
+      </div>
+
+      <div class="card">
+        <h3 class="lang-zh">AI 自動化風控</h3>
+        <h3 class="lang-en">AI Automated Risk Control</h3>
+        <p class="lang-zh">24/7 全天候監控流動性深度與市場深度，確保套利路徑在極端行情下依然保有高度安全性。</p>
+        <p class="lang-en">24/7 monitoring of liquidity and market depth, ensuring arbitrage paths remain highly secure.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title lang-zh" style="margin-top:120px;" id="contact">聯絡我們</h2>
+    <h2 class="section-title lang-en" style="margin-top:120px;" id="contact-en">Contact Us</h2>
+
+    <div class="contact-section">
+      <form id="contactForm">
+        <div class="form-group">
+          <label class="lang-zh">姓名 NAME</label>
+          <label class="lang-en">NAME</label>
+          <input type="text" id="name" required />
+        </div>
+
+        <div class="form-group">
+          <label class="lang-zh">電子信箱 EMAIL</label>
+          <label class="lang-en">EMAIL</label>
+          <input type="email" id="email" required />
+        </div>
+
+        <div class="form-group">
+          <label class="lang-zh">訊息 MESSAGE</label>
+          <label class="lang-en">MESSAGE</label>
+          <textarea id="message" rows="1"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span class="lang-zh">送出訊息</span>
+          <span class="lang-en">Send Message</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 OO科技有限公司 OOOO Technology Co., Ltd. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    let currentLang = "zh";
+    function switchLang() {
+      const zhElements = document.querySelectorAll(".lang-zh");
+      const enElements = document.querySelectorAll(".lang-en");
+      if (currentLang === "zh") {
+        zhElements.forEach((el) => (el.style.display = "none"));
+        enElements.forEach((el) => (el.style.display = "block"));
+        currentLang = "en";
+      } else {
+        zhElements.forEach((el) => (el.style.display = "block"));
+        enElements.forEach((el) => (el.style.display = "none"));
+        currentLang = "zh";
+      }
+    }
+
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwOblKF_bNV1xsMJc4wWhdqLlkns2wyNRZXXF--Jz058sf0V7XyCt0PkDF071SNCxhL5Q/exec";
+    const form = document.getElementById("contactForm");
+    const btn = document.getElementById("submitBtn");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      btn.disabled = true;
+      const originalContent = btn.innerHTML;
+      btn.innerHTML = currentLang === "zh" ? "傳送中..." : "SENDING...";
+
+      const data = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value,
+      };
+
+      fetch(scriptURL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+      .then(() => {
+        alert(currentLang === "zh" ? "感謝您的聯絡。" : "Message sent.");
+        form.reset();
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.innerHTML = originalContent;
+      });
+    });
+  </script>
+</body>
+</html>
