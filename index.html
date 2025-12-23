@@ -205,6 +205,13 @@
       font-size: 0.7rem;
       letter-spacing: 2px;
     }
+    .footer-url {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--silver-bright);
+      text-decoration: none;
+      font-weight: 600;
+    }
 
     .lang-en { display: none; }
   </style>
@@ -288,6 +295,7 @@
   </div>
 
   <footer>
+    <a href="https://www.mien.com.tw" class="footer-url">www.mien.com.tw</a>
     <p>&copy; 2025 MIENMIEN TECHNOLOGY CO., LTD. ALL RIGHTS RESERVED.</p>
   </footer>
 
@@ -330,7 +338,10 @@
         body: JSON.stringify(data),
       })
       .then(() => {
-        alert(currentLang === "zh" ? "訊息已送出，我們將盡快聯繫您。" : "Message sent successfully.");
+        const successMsg = currentLang === "zh" ? 
+          "訊息已成功送出，請靜候 www.mien.com.tw 的回覆。" : 
+          "Message sent successfully. Please await response from www.mien.com.tw.";
+        alert(successMsg);
         form.reset();
       })
       .finally(() => {
